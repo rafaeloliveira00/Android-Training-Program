@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Bobi</string>
+
+    <string name="welcome">Hello world 👋</string>
+
+    <string name="open_camera">Open camera</string>
+    <string name="open_details">Open details</string>
+
+    <string name="time_remaining">Remaining %d seconds</string>
+    <string name="time_done">Finished!</string>
+
+
+    <!-- Content Description -->
+    <string name="description_image">Image of a dog</string>
+
+    <string name="show_alert_dialog">Show alert dialog</string>
+    <string name="show_snackbar">Show Snackbar</string>
+    <string name="dialog_title">Dialog title</string>
+    <string name="dialog_message">Dialog message</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="dialog_on_ok">Confirmed</string>
+    <string name="dialog_on_cancel">Canceled</string>
+    <string name="snackbar_message">Snackbar message</string>
+    <string name="snackbar_thanks">Thanks</string>
+    <string name="snackbar_thanks_clicked">Snackbar button clicked</string>
+
+</resources>
