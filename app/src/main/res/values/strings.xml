@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Bobi</string>
 
-    <string name="welcome">Hello world 👋</string>
+    <string name="welcome_default">World</string>
+    <string name="welcome">Hello %s 👋</string>
 
     <string name="open_camera">Open camera</string>
     <string name="open_details">Open details</string>
@@ -30,8 +31,9 @@
     <string name="action_authenticate">Authenticate</string>
     <string name="save_credentials">Save credentials</string>
     <string name="error_invalid_credentials">Invalid credentials</string>
-    <string name="description_logo">description_logo</string>
+    <string name="description_logo">Description logo</string>
     <string name="error_credentials_empty_username">Missing username</string>
     <string name="error_credentials_empty_password">Missing password</string>
+
 
 </resources>

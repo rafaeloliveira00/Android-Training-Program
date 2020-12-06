@@ -18,12 +18,12 @@ private const val REQUEST_IMAGE_CAPTURE = 100
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var timer: CountDownTimer
-    private var untilFinished = 10000L
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val username = intent.extras?.getString(EXTRA_USERNAME, getString(R.string.welcome_default))
+        findViewById<TextView>(R.id.tv_hello).text = getString(R.string.welcome, username)
 
         findViewById<Button>(R.id.open_camera).setOnClickListener {
             openNativeCamera()
@@ -41,18 +41,6 @@ class MainActivity : AppCompatActivity() {
             showAppSnackbar()
         }
 
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-        startCountDownTimer(untilFinished)
-    }
-
-    override fun onPause() {
-        super.onPause()
-
-        timer.cancel()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -101,7 +89,6 @@ class MainActivity : AppCompatActivity() {
         builder.create().show()
     }
 
-
     /**
      * Show a SnackBar
      */
@@ -114,23 +101,5 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this@MainActivity, R.string.snackbar_thanks_clicked, Toast.LENGTH_SHORT)
                 .show()
         }.show()
-    }
-
-    private fun startCountDownTimer(time: Long) {
-        timer = object : CountDownTimer(time, 1000) {
-
-            override fun onTick(millisUntilFinished: Long) {
-                untilFinished = millisUntilFinished
-
-                findViewById<TextView>(R.id.countdown).text =
-                    getString(R.string.time_remaining, (untilFinished / 1000))
-            }
-
-            override fun onFinish() {
-                findViewById<TextView>(R.id.countdown).text = getString(R.string.time_done)
-            }
-
-        }
-        timer.start()
     }
 }

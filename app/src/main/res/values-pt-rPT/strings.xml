@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Bobi</string>
 
-    <string name="welcome">Olá Mundo 👋</string>
+    <string name="welcome">Olá %s 👋</string>
 
     <string name="open_camera">Abrir a câmara</string>
     <string name="open_details">Abrir os detalhes</string>
@@ -32,4 +32,5 @@
     <string name="description_logo">descrição logo</string>
     <string name="error_credentials_empty_username">Username em falta</string>
     <string name="error_credentials_empty_password">Password em falta</string>
+    <string name="welcome_default">Mundo</string>
 </resources>
