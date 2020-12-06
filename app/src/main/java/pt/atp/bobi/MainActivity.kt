@@ -101,6 +101,10 @@ class MainActivity : AppCompatActivity() {
         builder.create().show()
     }
 
+
+    /**
+     * Show a SnackBar
+     */
     private fun showAppSnackbar() {
         Snackbar.make(
             findViewById<ConstraintLayout>(R.id.container),

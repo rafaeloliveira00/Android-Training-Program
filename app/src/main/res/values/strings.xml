@@ -25,4 +25,13 @@
     <string name="snackbar_thanks">Thanks</string>
     <string name="snackbar_thanks_clicked">Snackbar button clicked</string>
 
+    <string name="hint_username">Your username goes here</string>
+    <string name="hint_password">Your password goes here</string>
+    <string name="action_authenticate">Authenticate</string>
+    <string name="save_credentials">Save credentials</string>
+    <string name="error_invalid_credentials">Invalid credentials</string>
+    <string name="description_logo">description_logo</string>
+    <string name="error_credentials_empty_username">Missing username</string>
+    <string name="error_credentials_empty_password">Missing password</string>
+
 </resources>

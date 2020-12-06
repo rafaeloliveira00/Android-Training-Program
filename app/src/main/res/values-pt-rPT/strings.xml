@@ -24,4 +24,12 @@
     <string name="snackbar_message">Snackbar mensagem</string>
     <string name="snackbar_thanks">Obrigado</string>
     <string name="snackbar_thanks_clicked">botao do snackbar clicado</string>
+    <string name="hint_password">Introduzir password</string>
+    <string name="hint_username">Introduzir username</string>
+    <string name="action_authenticate">Autenticar</string>
+    <string name="save_credentials">Guardar os dados</string>
+    <string name="error_invalid_credentials">Credenciais erradas</string>
+    <string name="description_logo">descrição logo</string>
+    <string name="error_credentials_empty_username">Username em falta</string>
+    <string name="error_credentials_empty_password">Password em falta</string>
 </resources>
