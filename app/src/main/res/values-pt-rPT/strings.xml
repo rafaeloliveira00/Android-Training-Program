@@ -33,4 +33,5 @@
     <string name="error_credentials_empty_username">Username em falta</string>
     <string name="error_credentials_empty_password">Password em falta</string>
     <string name="welcome_default">Mundo</string>
+    <string name="start_timer">Começar timer</string>
 </resources>

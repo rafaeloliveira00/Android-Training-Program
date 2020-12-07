@@ -5,10 +5,16 @@ import android.os.Bundle
 import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.TextView
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.get
 import com.google.android.material.textfield.TextInputEditText
 
 class LoginActivity : AppCompatActivity() {
+
+    private val viewModel: LoginViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -34,6 +40,19 @@ class LoginActivity : AppCompatActivity() {
         findViewById<Button>(R.id.btn_auth).setOnClickListener {
             validateCredentialsAndRedirect()
         }
+
+        viewModel.loginResultLiveData.observe(this) { loginResult ->
+            if (!loginResult) {
+                findViewById<TextView>(R.id.tv_error).text =
+                    getString(R.string.error_invalid_credentials)
+            } else {
+                val username = findViewById<TextInputEditText>(R.id.tet_username).text.toString()
+                val intent = Intent(this, MainActivity::class.java)
+                intent.putExtra(EXTRA_USERNAME, username)
+                startActivity(intent)
+                finish()
+            }
+        }
     }
 
     private fun validateCredentialsAndRedirect() {
@@ -41,35 +60,18 @@ class LoginActivity : AppCompatActivity() {
         val username = findViewById<TextInputEditText>(R.id.tet_username).text.toString()
         val password = findViewById<TextInputEditText>(R.id.tet_password).text.toString()
 
-        if (areCredentialsValid(username, password)) {
-            val intent = Intent(this, MainActivity::class.java)
-            intent.putExtra(EXTRA_USERNAME, username)
-            startActivity(intent)
-            finish()
-        }
-    }
-
-    private fun areCredentialsValid(username: String, password: String): Boolean {
-
         if (username.isEmpty()) {
             findViewById<TextView>(R.id.tv_error).text =
                 getString(R.string.error_credentials_empty_username)
-            return false
+            return
         }
 
         if (password.isEmpty()) {
             findViewById<TextView>(R.id.tv_error).text =
                 getString(R.string.error_credentials_empty_password)
-            return false
+            return
         }
 
-        val valid = username == password
-
-        if (!valid) {
-            findViewById<TextView>(R.id.tv_error).text =
-                getString(R.string.error_invalid_credentials)
-        }
-
-        return valid
+        viewModel.areCredentialsValid(username, password)
     }
 }
