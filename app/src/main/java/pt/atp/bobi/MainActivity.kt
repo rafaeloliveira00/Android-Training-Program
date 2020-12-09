@@ -17,11 +17,16 @@ import androidx.appcompat.app.AlertDialog
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.android.material.snackbar.Snackbar
 import java.io.File
 
 private const val REQUEST_IMAGE_CAPTURE = 100
 private const val REQUEST_READ_STORAGE = 200
+
+private const val FIFI =
+    "https://raw.githubusercontent.com/android-training-program/aula-5/master/imagens/fifi.jpg?raw=true"
 
 class MainActivity : AppCompatActivity() {
 
@@ -38,8 +43,8 @@ class MainActivity : AppCompatActivity() {
             openNativeCamera()
         }
 
-        findViewById<Button>(R.id.open_details).setOnClickListener {
-            openDetailsActivity()
+        findViewById<Button>(R.id.open_list).setOnClickListener {
+            openListActivity()
         }
 
         findViewById<Button>(R.id.show_dialog).setOnClickListener {
@@ -53,6 +58,12 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.startTimer).setOnClickListener {
             startTimer()
         }
+
+        Glide.with(this)
+            .load(FIFI)
+            .diskCacheStrategy(DiskCacheStrategy.ALL)
+            .fitCenter()
+            .into(findViewById(R.id.imageView))
 
         val tv_counter = findViewById<TextView>(R.id.tv_counter)
         viewModel.timerLiveDate.observe(this) { millis ->
@@ -83,8 +94,8 @@ class MainActivity : AppCompatActivity() {
     /**
      * Calling this method will open a new activity.
      */
-    private fun openDetailsActivity() {
-        val intent = Intent(this, DetailsActivity::class.java)
+    private fun openListActivity() {
+        val intent = Intent(this, ListActivity::class.java)
         startActivity(intent)
     }
 

@@ -35,6 +35,7 @@
     <string name="error_credentials_empty_username">Missing username</string>
     <string name="error_credentials_empty_password">Missing password</string>
     <string name="start_timer">Start timer</string>
+    <string name="open_list">Open List</string>
 
 
 </resources>

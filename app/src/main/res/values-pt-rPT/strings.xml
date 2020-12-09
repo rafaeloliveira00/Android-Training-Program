@@ -34,4 +34,5 @@
     <string name="error_credentials_empty_password">Password em falta</string>
     <string name="welcome_default">Mundo</string>
     <string name="start_timer">Começar timer</string>
+    <string name="open_list">Abrir lista</string>
 </resources>
