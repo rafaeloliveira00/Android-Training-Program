@@ -1,4 +1,4 @@
-package pt.atp.bobi
+package pt.atp.bobi.presentation.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,9 +7,10 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.get
 import com.google.android.material.textfield.TextInputEditText
+import pt.atp.bobi.EXTRA_USERNAME
+import pt.atp.bobi.R
+import pt.atp.bobi.presentation.LoginViewModel
 
 class LoginActivity : AppCompatActivity() {
 

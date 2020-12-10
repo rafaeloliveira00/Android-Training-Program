@@ -1,4 +1,4 @@
-package pt.atp.bobi
+package pt.atp.bobi.presentation
 
 import android.os.CountDownTimer
 import androidx.lifecycle.MutableLiveData

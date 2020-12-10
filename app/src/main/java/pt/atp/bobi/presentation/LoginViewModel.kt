@@ -1,4 +1,4 @@
-package pt.atp.bobi
+package pt.atp.bobi.presentation
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

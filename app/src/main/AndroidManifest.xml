@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bobi">
         <activity
-            android:name=".LoginActivity"
+            android:name=".presentation.ui.LoginActivity"
             android:theme="@style/Theme.Bobi.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,9 +22,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MainActivity" />
-        <activity android:name=".DetailsActivity" />
-        <activity android:name=".ListActivity" />
+        <activity android:name=".presentation.ui.MainActivity" />
+        <activity android:name=".presentation.ui.DetailsActivity" />
+        <activity android:name=".presentation.ui.ListActivity" />
 
     </application>
 

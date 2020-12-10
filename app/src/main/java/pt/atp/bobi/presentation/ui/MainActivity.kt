@@ -1,4 +1,4 @@
-package pt.atp.bobi
+package pt.atp.bobi.presentation.ui
 
 import android.Manifest
 import android.content.Intent
@@ -20,6 +20,9 @@ import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.android.material.snackbar.Snackbar
+import pt.atp.bobi.EXTRA_USERNAME
+import pt.atp.bobi.R
+import pt.atp.bobi.presentation.MainViewModel
 import java.io.File
 
 private const val REQUEST_IMAGE_CAPTURE = 100

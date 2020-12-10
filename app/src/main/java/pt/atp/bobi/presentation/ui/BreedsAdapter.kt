@@ -1,4 +1,4 @@
-package pt.atp.bobi
+package pt.atp.bobi.presentation.ui
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,9 +7,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import pt.atp.bobi.R
 import pt.atp.bobi.data.model.Breed
 
-class BreedsAdapter : ListAdapter<Breed, BreedsAdapter.BreedsViewHolder>(DiffCallback()) {
+class BreedsAdapter(val clickAction: (Breed) -> Unit) :
+    ListAdapter<Breed, BreedsAdapter.BreedsViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BreedsViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -19,6 +21,9 @@ class BreedsAdapter : ListAdapter<Breed, BreedsAdapter.BreedsViewHolder>(DiffCal
     override fun onBindViewHolder(holder: BreedsViewHolder, position: Int) {
         val breed = getItem(position)
         holder.breed.text = breed.name
+        holder.breed.setOnClickListener {
+            clickAction(breed)
+        }
     }
 
     private class DiffCallback : DiffUtil.ItemCallback<Breed>() {
