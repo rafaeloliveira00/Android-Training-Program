@@ -2,24 +2,31 @@ package pt.atp.bobi.presentation.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import pt.atp.bobi.EXTRA_DOG_BREED
 import pt.atp.bobi.EXTRA_DOG_NAME
 import pt.atp.bobi.R
-import pt.atp.bobi.data.DogsAPIClient
-import pt.atp.bobi.data.callback.DataRetriever
 import pt.atp.bobi.data.model.Breed
+import pt.atp.bobi.presentation.BreedsViewModel
 
 private const val TAG = "ListActivity"
 
-class ListActivity : AppCompatActivity(), DataRetriever {
+class ListActivity : AppCompatActivity() {
+
+    private val viewModel: BreedsViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list)
 
+        setup()
+        viewModel.loadDogs()
+    }
+
+    private fun setup() {
         findViewById<RecyclerView>(R.id.rv_breeds).apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(applicationContext)
@@ -27,7 +34,16 @@ class ListActivity : AppCompatActivity(), DataRetriever {
                 openDetailsScreen(it)
             }
         }
-        DogsAPIClient.getListOfBreeds(this)
+
+        viewModel.dogsLiveData.observe(this) {
+            val adapter =
+                findViewById<RecyclerView>(R.id.rv_breeds).adapter as BreedsAdapter
+            adapter.submitList(it)
+        }
+
+//        viewModel.loadDogsDatabase().observe(this) {
+//            Log.d(TAG, "$it")
+//        }
     }
 
     private fun openDetailsScreen(breed: Breed) {
@@ -35,14 +51,5 @@ class ListActivity : AppCompatActivity(), DataRetriever {
         intent.putExtra(EXTRA_DOG_NAME, breed.name)
         intent.putExtra(EXTRA_DOG_BREED, breed.id)
         startActivity(intent)
-    }
-
-    override fun onDataFetchedSuccess(breeds: List<Breed>) {
-        val adapter = findViewById<RecyclerView>(R.id.rv_breeds).adapter as BreedsAdapter
-        adapter.submitList(breeds)
-    }
-
-    override fun onDataFetchedFailed() {
-        Log.d(TAG, "onDataFetchedFailed")
     }
 }
