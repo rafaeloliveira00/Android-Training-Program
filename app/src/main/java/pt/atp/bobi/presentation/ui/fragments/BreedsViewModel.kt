@@ -1,14 +1,10 @@
-package pt.atp.bobi.presentation
+package pt.atp.bobi.presentation.ui.fragments
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import pt.atp.bobi.data.DogsAPIClient
 import pt.atp.bobi.data.callback.DataRetriever
 import pt.atp.bobi.data.model.Breed
-import pt.atp.bobi.data.persistence.DogModel
-import pt.atp.bobi.data.persistence.DogRepository
 
 class BreedsViewModel(
 ) : ViewModel(), DataRetriever {

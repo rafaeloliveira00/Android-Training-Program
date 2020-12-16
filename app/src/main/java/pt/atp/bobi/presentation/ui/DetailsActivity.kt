@@ -44,8 +44,7 @@ class DetailsActivity : AppCompatActivity(), DataSearched {
 
             findViewById<TextView>(R.id.tv_name).text = dog.breed[0].name
             findViewById<TextView>(R.id.tv_temperament).text = dog.breed[0].temperament
-        }
-        else{
+        } else {
             Log.w(TAG, "No image found")
         }
     }
