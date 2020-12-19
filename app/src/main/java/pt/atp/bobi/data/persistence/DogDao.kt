@@ -9,7 +9,7 @@ import androidx.room.Query
 @Dao
 interface DogDao {
 
-    @Query("select * from dog order by id asc")
+    @Query("select * from dog order by name asc")
     fun getAlphabetizedDogs(): LiveData<List<DogModel>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)

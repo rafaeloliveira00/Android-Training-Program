@@ -2,6 +2,7 @@ package pt.atp.bobi.presentation.ui.fragments
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import pt.atp.bobi.BobiApplication
 import pt.atp.bobi.EXTRA_DOG_BREED
 import pt.atp.bobi.EXTRA_DOG_NAME
 import pt.atp.bobi.R
@@ -16,13 +18,17 @@ import pt.atp.bobi.data.model.Breed
 import pt.atp.bobi.presentation.ui.BreedsAdapter
 import pt.atp.bobi.presentation.ui.DetailsActivity
 
+var TAG = "BreedsFragment"
+
 class BreedsFragment : Fragment() {
 
-    private val viewModel: BreedsViewModel by viewModels()
+    private val viewModel by viewModels<BreedsViewModel>() {
+        BreedsViewModelFactory((requireActivity().application as BobiApplication).repository)
+    }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_breeds, container, false)
@@ -47,8 +53,12 @@ class BreedsFragment : Fragment() {
 
         viewModel.dogsLiveData.observe(viewLifecycleOwner) {
             val adapter =
-                requireView().findViewById<RecyclerView>(R.id.rv_breeds).adapter as BreedsAdapter
+                    requireView().findViewById<RecyclerView>(R.id.rv_breeds).adapter as BreedsAdapter
             adapter.submitList(it)
+        }
+
+        viewModel.loadDogsDatabase().observe(viewLifecycleOwner) {
+            Log.d(TAG, "$it")
         }
     }
 

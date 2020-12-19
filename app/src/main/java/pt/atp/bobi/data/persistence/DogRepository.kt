@@ -9,7 +9,7 @@ class DogRepository(private val dogDao: DogDao) {
     fun insert(dog: DogModel) {
         KennelDatabase
             .databaseWriteExecutor
-            .execute{
+            .execute {
                 dogDao.insert(dog)
             }
     }
