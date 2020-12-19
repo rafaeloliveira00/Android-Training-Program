@@ -43,5 +43,18 @@
     <string name="main_menu_about">About</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="about_copyright" translatable="false">Copyright 2020</string>
+    <string name="about_email" translatable="false">E-mail</string>
+    <string name="about_website" translatable="false">Website</string>
+    <string name="about_youtube" translatable="false">Youtube</string>
+    <string name="about_share">Share</string>
+    <string name="about_authors">Authors</string>
+    <string name="twitter" translatable="false">Twiter</string>
+    <string name="about_libraries">Libraries</string>
+    <string name="about_android" translatable="false">Android</string>
+    <string name="about_retrofit" translatable="false">Retrofit</string>
+    <string name="about_glide" translatable="false">Glide</string>
+    <string name="about_icons8" translatable="false">icons8</string>
+    <string name="settings">Settings</string>
 
 </resources>

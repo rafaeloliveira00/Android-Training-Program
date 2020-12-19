@@ -25,12 +25,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    buildFeatures {
+        compose true
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
         jvmTarget = '1.8'
+        useIR = true
     }
 }
 
@@ -53,6 +59,11 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+
+    implementation "androix.compose.ui:ui:1.0.0-alpha07"
+    implementation "androix.compose.foundation:foundation:1.0.0-alpha07"
+    implementation "androidx.ui:ui-tooling:1.0.0-alpha07"
+    implementation "androidx.compose.material:material:1.0.0-alpha09"
 
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

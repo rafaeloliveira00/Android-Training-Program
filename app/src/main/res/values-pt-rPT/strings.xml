@@ -39,4 +39,10 @@
     <string name="main_menu_home">Início</string>
     <string name="main_menu_breeds">Raças</string>
     <string name="main_menu_favourites">Favoritos</string>
+    <string name="main_menu_about">Sobre</string>
+    <string name="hello_blank_fragment">Ola fragmento preto</string>
+    <string name="about_share">Partilhar</string>
+    <string name="about_authors">Autores</string>
+    <string name="about_libraries">Livrarias</string>
+    <string name="settings">Opções</string>
 </resources>
