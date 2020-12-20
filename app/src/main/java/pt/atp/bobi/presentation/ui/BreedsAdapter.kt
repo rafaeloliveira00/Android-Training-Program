@@ -3,6 +3,7 @@ package pt.atp.bobi.presentation.ui
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -10,7 +11,10 @@ import androidx.recyclerview.widget.RecyclerView
 import pt.atp.bobi.R
 import pt.atp.bobi.data.model.Breed
 
-class BreedsAdapter(val clickAction: (Breed) -> Unit) :
+class BreedsAdapter(
+    val clickAction: (Breed) -> Unit,
+    val favAction: (Breed) -> Unit
+) :
     ListAdapter<Breed, BreedsAdapter.BreedsViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BreedsViewHolder {
@@ -20,9 +24,19 @@ class BreedsAdapter(val clickAction: (Breed) -> Unit) :
 
     override fun onBindViewHolder(holder: BreedsViewHolder, position: Int) {
         val breed = getItem(position)
-        holder.breed.text = breed.name
+
+        holder.breed.text = breed!!.name
         holder.breed.setOnClickListener {
             clickAction(breed)
+        }
+
+        if (breed.fav)
+            holder.fav.setImageResource(R.drawable.ic_favorite)
+        else
+            holder.fav.setImageResource(R.drawable.ic_favorite_empty)
+
+        holder.fav.setOnClickListener {
+            favAction(breed)
         }
     }
 
@@ -37,6 +51,7 @@ class BreedsAdapter(val clickAction: (Breed) -> Unit) :
     }
 
     inner class BreedsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val breed = itemView.findViewById(R.id.tv_breed_name) as TextView
+        val breed = itemView.findViewById(R.id.tv_breed) as TextView
+        val fav = itemView.findViewById(R.id.fav) as ImageView
     }
 }

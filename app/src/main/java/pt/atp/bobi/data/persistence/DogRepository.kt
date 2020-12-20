@@ -1,16 +1,29 @@
 package pt.atp.bobi.data.persistence
 
-import androidx.lifecycle.LiveData
-
 class DogRepository(private val dogDao: DogDao) {
 
-    val allDogs: LiveData<List<DogModel>> = dogDao.getAlphabetizedDogs()
+    fun getDogs(onLoaded: (List<Dog>) -> Unit) {
+        KennelDatabase
+            .databaseWriteExecutor
+            .execute {
+                onLoaded(dogDao.getDogs())
+            }
+    }
 
-    fun insert(dog: DogModel) {
+    fun insert(dog: Dog) {
         KennelDatabase
             .databaseWriteExecutor
             .execute {
                 dogDao.insert(dog)
+            }
+    }
+
+    fun deleteById(id: String, onLoaded: (Unit) -> Unit) {
+        KennelDatabase
+            .databaseWriteExecutor
+            .execute {
+                dogDao.deleteById(id)
+                onLoaded(Unit)
             }
     }
 }

@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bobi">
         <activity
-            android:name=".presentation.compose.AboutActivity"
+            android:name=".presentation.ui.MainActivity"
             android:theme="@style/Theme.Bobi.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".presentation.ui.MainActivity" />
+<!--        <activity android:name=".presentation.ui.MainActivity" />-->
         <activity android:name=".presentation.ui.DetailsActivity" />
 
     </application>

@@ -3,16 +3,25 @@ package pt.atp.bobi.data.model
 import com.squareup.moshi.Json
 
 data class Breed(
-    @Json(name = "bred_for")
+    @field:Json(name = "bred_for")
     val bredFor: String,
-    @Json(name = "breed_group")
-    val breedGroup: String,
-    val height: Height,
+    @field:Json(name = "bred_group")
+    val bredGroup: String?,
+    @field:Json(name = "height")
+    val height: Height?,
+    @field:Json(name = "id")
     val id: String,
-    @Json(name = "life_span")
+    @field:Json(name = "life_span")
     val lifeSpan: String,
+    @field:Json(name = "name")
     val name: String,
-    val origin: String,
+    @field:Json(name = "origin")
+    val origin: String?,
+    @field:Json(name = "temperament")
     val temperament: String,
-    val weight: Weight
+    @field:Json(name = "weight")
+    val weight: Weight?,
+
+    @Transient
+    var fav: Boolean = false
 )

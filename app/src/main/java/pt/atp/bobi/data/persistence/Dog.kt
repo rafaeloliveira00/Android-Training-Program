@@ -5,19 +5,19 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "dog")
-data class DogModel(
-    @PrimaryKey(autoGenerate = false)
-    val id: Int,
+data class Dog(
     @ColumnInfo(name = "bred_for")
-    val bredFor: String,
+    val bredFor: String?,
     @ColumnInfo(name = "bred_group")
-    val breedGroup: String,
+    val bredGroup: String?,
+    @PrimaryKey(autoGenerate = false)
+    val id: String,
     @ColumnInfo(name = "life_span")
-    val lifeSpan: Int,
+    val lifeSpan: String,
     @ColumnInfo(name = "name")
     val name: String,
     @ColumnInfo(name = "origin")
     val origin: String?,
     @ColumnInfo(name = "temperament")
-    val temperament: String
+    val temperament: String,
 )
