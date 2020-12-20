@@ -41,7 +41,7 @@
     <string name="main_menu_breeds">Breeds</string>
     <string name="main_menu_favourites">Favourites</string>
     <string name="main_menu_about">About</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="about_copyright" translatable="false">Copyright 2020</string>
     <string name="about_email" translatable="false">E-mail</string>
