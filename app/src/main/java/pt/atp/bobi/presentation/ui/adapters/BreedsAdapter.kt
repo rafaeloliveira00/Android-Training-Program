@@ -1,4 +1,4 @@
-package pt.atp.bobi.presentation.ui
+package pt.atp.bobi.presentation.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.View

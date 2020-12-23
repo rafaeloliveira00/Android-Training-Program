@@ -5,16 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import pt.atp.bobi.R
-import pt.atp.bobi.presentation.ui.fragments.AboutFragment
-import pt.atp.bobi.presentation.ui.fragments.BreedsFragment
-import pt.atp.bobi.presentation.ui.fragments.FavouritesFragment
-import pt.atp.bobi.presentation.ui.fragments.HomeFragment
+import pt.atp.bobi.presentation.ui.fragments.*
 
 class MainActivity : AppCompatActivity() {
 
     private val homeFragment by lazy { HomeFragment() }
     private val breedsFragment by lazy { BreedsFragment() }
     private val favouritesFragment by lazy { FavouritesFragment() }
+    private val chatFragment by lazy { ChatFragment() }
     private val aboutFragment by lazy { AboutFragment() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +32,11 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.breeds -> {
                     loadFragment(breedsFragment)
+                    true
+                }
+
+                R.id.chat -> {
+                    loadFragment(chatFragment)
                     true
                 }
 

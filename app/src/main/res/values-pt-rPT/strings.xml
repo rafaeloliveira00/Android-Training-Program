@@ -45,4 +45,5 @@
     <string name="about_authors">Autores</string>
     <string name="about_libraries">Livrarias</string>
     <string name="settings">Opções</string>
+    <string name="write_something_here">Escreva algo aqui...</string>
 </resources>

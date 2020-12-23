@@ -1,20 +1,16 @@
 package pt.atp.bobi.presentation.ui
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.view.inputmethod.EditorInfo
-import android.widget.Button
-import android.widget.TextView
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.textfield.TextInputEditText
-import pt.atp.bobi.EXTRA_USERNAME
+import com.firebase.ui.auth.AuthUI
+import com.google.android.gms.common.SignInButton
 import pt.atp.bobi.R
-import pt.atp.bobi.presentation.LoginViewModel
+
+private const val REQUEST_SIGN_IN = 101
 
 class LoginActivity : AppCompatActivity() {
-
-    private val viewModel: LoginViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,56 +19,25 @@ class LoginActivity : AppCompatActivity() {
         setup()
     }
 
-    private fun setup() {
-        findViewById<TextInputEditText>(R.id.tet_username).setOnEditorActionListener { _, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                validateCredentialsAndRedirect()
-            }
-            true
-        }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
 
-        findViewById<TextInputEditText>(R.id.tet_password).setOnEditorActionListener { _, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                validateCredentialsAndRedirect()
-            }
-            true
-        }
-
-        findViewById<Button>(R.id.btn_auth).setOnClickListener {
-            validateCredentialsAndRedirect()
-        }
-
-        viewModel.loginResultLiveData.observe(this) { loginResult ->
-            if (!loginResult) {
-                findViewById<TextView>(R.id.tv_error).text =
-                    getString(R.string.error_invalid_credentials)
-            } else {
-                val username = findViewById<TextInputEditText>(R.id.tet_username).text.toString()
-                val intent = Intent(this, MainActivity::class.java)
-                intent.putExtra(EXTRA_USERNAME, username)
-                startActivity(intent)
-                finish()
-            }
+        if(requestCode == REQUEST_SIGN_IN && resultCode == Activity.RESULT_OK){
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
     }
 
-    private fun validateCredentialsAndRedirect() {
-
-        val username = findViewById<TextInputEditText>(R.id.tet_username).text.toString()
-        val password = findViewById<TextInputEditText>(R.id.tet_password).text.toString()
-
-        if (username.isEmpty()) {
-            findViewById<TextView>(R.id.tv_error).text =
-                getString(R.string.error_credentials_empty_username)
-            return
+    private fun setup() {
+        findViewById<SignInButton>(R.id.sign_in).setOnClickListener {
+            val providers = arrayListOf(AuthUI.IdpConfig.GoogleBuilder().build())
+            startActivityForResult(
+                AuthUI.getInstance()
+                    .createSignInIntentBuilder()
+                    .setAvailableProviders(providers)
+                    .build(),
+                REQUEST_SIGN_IN
+            )
         }
-
-        if (password.isEmpty()) {
-            findViewById<TextView>(R.id.tv_error).text =
-                getString(R.string.error_credentials_empty_password)
-            return
-        }
-
-        viewModel.areCredentialsValid(username, password)
     }
 }

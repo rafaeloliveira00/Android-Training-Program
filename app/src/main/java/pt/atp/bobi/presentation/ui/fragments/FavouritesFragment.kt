@@ -14,8 +14,8 @@ import pt.atp.bobi.EXTRA_DOG_BREED
 import pt.atp.bobi.EXTRA_DOG_NAME
 import pt.atp.bobi.R
 import pt.atp.bobi.data.model.Breed
-import pt.atp.bobi.presentation.ui.BreedsAdapter
 import pt.atp.bobi.presentation.ui.DetailsActivity
+import pt.atp.bobi.presentation.ui.adapters.BreedsAdapter
 
 class FavouritesFragment : Fragment() {
 

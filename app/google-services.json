@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "238399310573",
+    "project_id": "androidtrainingprogram20",
+    "storage_bucket": "androidtrainingprogram20.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:238399310573:android:fd760ccb1ea9abfac15ae4",
+        "android_client_info": {
+          "package_name": "pt.atp.bobi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "238399310573-9cjafgcrr27ls5hn2iul8st4b8mp6k3g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "pt.atp.bobi",
+            "certificate_hash": "1f9ed4da7bb777598b616bebde59d49b99c2d3b9"
+          }
+        },
+        {
+          "client_id": "238399310573-7o9rve1vor4mmon1pd19ue8vqrpoce9c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAngiwP6jMX3Ij1m-ba-_VYISN_-9nThKU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "238399310573-7o9rve1vor4mmon1pd19ue8vqrpoce9c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
