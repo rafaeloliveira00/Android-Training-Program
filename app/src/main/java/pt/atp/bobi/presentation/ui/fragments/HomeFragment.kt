@@ -28,12 +28,14 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.perf.FirebasePerformance
 import pt.atp.bobi.EXTRA_USERNAME
 import pt.atp.bobi.R
+import pt.atp.bobi.presentation.ui.CameraActivity
 import java.io.File
 import java.lang.Exception
 import java.lang.RuntimeException
 
 private const val REQUEST_IMAGE_CAPTURE = 100
 private const val REQUEST_READ_STORAGE = 200
+private const val REQUEST_IMAGE_CAPTURE_CUSTOM_CAMERA = 300
 
 class HomeFragment : Fragment() {
 
@@ -68,6 +70,13 @@ class HomeFragment : Fragment() {
 
         view.findViewById<Button>(R.id.startTimer).setOnClickListener {
             startTimer()
+        }
+
+        view.findViewById<Button>(R.id.open_custom_camera).setOnClickListener {
+            startActivityForResult(
+                Intent(requireContext(), CameraActivity::class.java),
+                REQUEST_IMAGE_CAPTURE_CUSTOM_CAMERA
+            )
         }
 
         view.findViewById<Button>(R.id.crash).setOnClickListener {
@@ -127,7 +136,11 @@ class HomeFragment : Fragment() {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == AppCompatActivity.RESULT_OK) {
             val imageBitmap = data?.extras?.get("data") as Bitmap
             requireView().findViewById<ImageView>(R.id.imageView).setImageBitmap(imageBitmap)
+        } else if (requestCode == REQUEST_IMAGE_CAPTURE_CUSTOM_CAMERA && resultCode == AppCompatActivity.RESULT_OK) {
+            val imageUri = data?.extras?.get("data") as Uri
+            requireView().findViewById<ImageView>(R.id.imageView).setImageURI(imageUri)
         }
+
         super.onActivityResult(requestCode, resultCode, data)
     }
 

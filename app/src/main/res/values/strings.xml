@@ -59,5 +59,6 @@
     <string name="chat" translatable="false">Chat</string>
     <string name="write_something_here">Write something here</string>
     <string name="crash_app" translatable="false">Crash app</string>
+    <string name="open_custom_camera">Open custom camera</string>
 
 </resources>
