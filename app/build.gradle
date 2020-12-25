@@ -3,6 +3,8 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
+    id 'com.google.firebase.firebase-perf'
 }
 
 android {
@@ -100,6 +102,17 @@ dependencies {
 
     implementation 'com.google.firebase:firebase-firestore-ktx'
     implementation 'com.firebaseui:firebase-ui-auth:6.4.0'
+
+    // crashlytics and analytics (firebase)
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+
+    // performance (firebase)
+    implementation 'com.google.firebase:firebase-perf-ktx'
+
+    // pushing notifications (firebase)
+    implementation 'com.google.firebase:firebase-messaging-ktx'
+
 
     //Used for testing
     testImplementation 'junit:junit:4.+'

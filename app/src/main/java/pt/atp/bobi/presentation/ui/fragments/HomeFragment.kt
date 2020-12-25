@@ -7,6 +7,7 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,9 +23,14 @@ import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.crashlytics.FirebaseCrashlytics
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.perf.FirebasePerformance
 import pt.atp.bobi.EXTRA_USERNAME
 import pt.atp.bobi.R
 import java.io.File
+import java.lang.Exception
+import java.lang.RuntimeException
 
 private const val REQUEST_IMAGE_CAPTURE = 100
 private const val REQUEST_READ_STORAGE = 200
@@ -64,6 +70,24 @@ class HomeFragment : Fragment() {
             startTimer()
         }
 
+        view.findViewById<Button>(R.id.crash).setOnClickListener {
+
+            val millis = System.currentTimeMillis()
+
+            if (millis % 2 == 0L) {
+                // crashlytics will catch this
+                throw RuntimeException("Crashed on purpose")
+            }
+
+            try {
+                val a = 1 / 0
+            } catch (e: Exception) {
+                // and this
+                FirebaseCrashlytics.getInstance().setCustomKey("some_key", 10)
+                FirebaseCrashlytics.getInstance().recordException(e)
+            }
+        }
+
         Glide.with(this)
             .load("https://github.com/android-training-program/aula-5/blob/master/imagens/fifi.jpg?raw=true")
             .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -78,6 +102,9 @@ class HomeFragment : Fragment() {
             if (count == 0L)
                 loadImage()
         }
+
+        // performance analytics
+        heavyOperation().start()
     }
 
     override fun onRequestPermissionsResult(
@@ -181,5 +208,11 @@ class HomeFragment : Fragment() {
 
         val imageView = requireView().findViewById<ImageView>(R.id.imageView)
         imageView.setImageURI(uri)
+    }
+
+    private fun heavyOperation() = Thread {
+        val trace = FirebasePerformance.getInstance().newTrace("heavy_operation")
+        Thread.sleep(5000)
+        trace.stop()
     }
 }
