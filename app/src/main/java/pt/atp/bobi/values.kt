@@ -10,3 +10,11 @@ const val EXTRA_DOG_NAME = "extra.dog.name"
 const val EXTRA_DOG_BREED = "extra.dog.breed"
 
 fun deviceName() = "${Build.MODEL}-${Build.MANUFACTURER}"
+
+class Values {
+    companion object {
+        @JvmStatic
+        fun dogs() {
+        }
+    }
+}

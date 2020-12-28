@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bobi">
         <activity
-            android:name=".presentation.ui.LoginActivity"
+            android:name=".presentation.ui.googlyeyes.GooglyEyesActivity"
             android:theme="@style/Theme.Bobi.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

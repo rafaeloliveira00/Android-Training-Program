@@ -113,6 +113,8 @@ dependencies {
     // pushing notifications (firebase)
     implementation 'com.google.firebase:firebase-messaging-ktx'
 
+    //ML Kit
+    implementation 'com.google.mlkit:face-detection:16.0.2'
 
     //Used for testing
     testImplementation 'junit:junit:4.+'
